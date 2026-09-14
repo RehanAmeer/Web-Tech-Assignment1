@@ -7,25 +7,25 @@
 
 /* ---------- Design tokens ---------- */
 :root {
-  --walnut-900: #2b1d14;
-  --walnut-700: #4a3320;
-  --parchment: #efe3c8;
-  --parchment-light: #f7f1e2;
-  --gold: #c68a2e;
-  --gold-dark: #a56f1f;
-  --pistachio: #5b7248;
-  --rust: #7a3b2e;
-  --ink: #241812;
-  --ink-soft: #55483c;
-  --line: rgba(43, 29, 20, 0.15);
-  --white: #fffaf2;
+  --walnut-900: #16301b;   /* deep forest green — nav / footer / dark sections */
+  --walnut-700: #294f27;   /* secondary dark green */
+  --parchment: #eef1e2;    /* soft off-white with a green cast */
+  --parchment-light: #f8f7ef; /* page background */
+  --gold: #cf9a2e;         /* premium / gift accent, echoes the dates-poster gold */
+  --gold-dark: #ad7f22;
+  --pistachio: #4f8a3e;    /* bright leaf green accent */
+  --rust: #a1442f;         /* error / remove state */
+  --ink: #1d2a17;
+  --ink-soft: #52604a;
+  --line: rgba(22, 48, 27, 0.14);
+  --white: #ffffff;
 
   --font-display: "Fraunces", "Georgia", serif;
   --font-body: "Karla", "Segoe UI", sans-serif;
 
   --radius-s: 4px;
   --radius-m: 10px;
-  --shadow-card: 0 1px 0 rgba(43, 29, 20, 0.06);
+  --shadow-card: 0 1px 0 rgba(22, 48, 27, 0.06);
   --max-width: 1180px;
 }
 
@@ -159,13 +159,14 @@ input, textarea, select {
   color: var(--white);
 }
 .brand .brand-mark {
-  width: 34px; height: 34px;
+  width: 38px; height: 38px;
   border-radius: 50%;
-  background: var(--gold);
-  color: var(--walnut-900);
+  overflow: hidden;
+  background: var(--white);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1rem;
+  flex-shrink: 0;
 }
+.brand .brand-mark img { width: 100%; height: 100%; object-fit: cover; }
 
 .nav-links {
   display: flex;
@@ -740,6 +741,21 @@ input, textarea, select {
   transform: translateX(-50%) translateY(0);
 }
 
+/* ---------- Promo banner (real marketing posters) ---------- */
+.promo-strip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.promo-card {
+  position: relative;
+  border-radius: var(--radius-s);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  min-height: 220px;
+}
+.promo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
   .hero .container { grid-template-columns: 1fr; }
@@ -752,6 +768,7 @@ input, textarea, select {
   .about-hero img { height: 260px; }
   .contact-layout { grid-template-columns: 1fr; }
   .slider-track .product-card { min-width: calc(50% - 11px); }
+  .promo-strip { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 720px) {

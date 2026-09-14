@@ -4,7 +4,7 @@
    ========================================================= */
 
 const CART_KEY = "moonpure_cart";
-const WHATSAPP_NUMBER = "923001234567"; // demo number — replace with real store number
+const WHATSAPP_NUMBER = "923058075711"; // Moonpure.pk WhatsApp / call number
 
 function getCart() {
   try {
