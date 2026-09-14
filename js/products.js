@@ -2,27 +2,20 @@
    Moonpure — product catalog + rendering + filter/search
    ========================================================= */
 
-const IMG = {
-  almond: "https://images.unsplash.com/photo-1615485737457-f07082c77813?auto=format&fit=crop&w=800&q=70",
-  walnut: "https://images.unsplash.com/photo-1512905024369-fe9701b6d8f1?auto=format&fit=crop&w=800&q=70",
-  pista:  "https://images.unsplash.com/photo-1551238875-13b9d38454db?auto=format&fit=crop&w=800&q=70",
-};
-
 const PRODUCTS = [
-  { id: "p1", name: "Premium Almonds", urdu: "Badam", category: "nuts", price: 1250, unit: "kg", img: IMG.almond, tint: "" },
-  { id: "p2", name: "California Walnuts", urdu: "Akhrot", category: "nuts", price: 1850, unit: "kg", img: IMG.walnut, tint: "" },
-  { id: "p3", name: "Green Pistachios", urdu: "Pista", category: "nuts", price: 3200, unit: "kg", img: IMG.pista, tint: "" },
-  { id: "p4", name: "Roasted Cashews", urdu: "Kaju", category: "nuts", price: 2200, unit: "kg", img: IMG.almond, tint: "tint-warm" },
-  { id: "p5", name: "Soft Dates", urdu: "Khajoor", category: "dried", price: 950, unit: "kg", img: IMG.walnut, tint: "tint-rust" },
-  { id: "p6", name: "Golden Raisins", urdu: "Kishmish", category: "dried", price: 750, unit: "kg", img: IMG.pista, tint: "tint-cool" },
-  { id: "p7", name: "Dried Apricots", urdu: "Khubani", category: "dried", price: 890, unit: "kg", img: IMG.almond, tint: "tint-gold" },
-  { id: "p8", name: "House Trail Mix", urdu: "Mix Dry Fruit", category: "dried", price: 1100, unit: "kg", img: IMG.walnut, tint: "tint-cool" },
-  { id: "p9", name: "Eid Gift Box", urdu: "Tohfa", category: "gifts", price: 2800, unit: "box", img: IMG.pista, tint: "tint-warm" },
-  { id: "p10", name: "Wedding Hamper", urdu: "Shaadi Hamper", category: "gifts", price: 3600, unit: "box", img: IMG.almond, tint: "" },
-  { id: "p11", name: "Corporate Gift Set", urdu: "Corporate Box", category: "gifts", price: 4500, unit: "box", img: IMG.walnut, tint: "tint-gold" },
+  { id: "p1", name: "Premium Almonds", urdu: "Badaam", category: "nuts", price: 1250, unit: "kg", img: "images/almonds.jpg", tint: "" },
+  { id: "p2", name: "Roasted Cashews", urdu: "Kaju", category: "nuts", price: 2200, unit: "kg", img: "images/cashews.jpg", tint: "" },
+  { id: "p3", name: "California Walnuts", urdu: "Akhrot", category: "nuts", price: 1850, unit: "kg", img: "https://images.unsplash.com/photo-1512905024369-fe9701b6d8f1?auto=format&fit=crop&w=800&q=70", tint: "" },
+  { id: "p4", name: "Pumpkin Seeds", urdu: "Kaddu ke Beej", category: "nuts", price: 980, unit: "kg", img: "https://images.unsplash.com/photo-1447903196606-76e102ef24f9?auto=format&fit=crop&w=800&q=70", tint: "" },
+  { id: "p5", name: "Premium Dates", urdu: "Mabroom", category: "dried", price: 1450, unit: "kg", img: "images/dates.jpg", tint: "" },
+  { id: "p6", name: "Dried Figs", urdu: "Anjeer", category: "dried", price: 1650, unit: "kg", img: "images/figs.jpg", tint: "" },
+  { id: "p7", name: "House Mixed Dry Fruit", urdu: "Mix Dry Fruit", category: "dried", price: 1350, unit: "kg", img: "images/mixed-dry-fruit.jpg", tint: "" },
+  { id: "p8", name: "Green Pistachios", urdu: "Pista", category: "nuts", price: 3200, unit: "kg", img: "images/pistachios.jpg", tint: "" },
+  { id: "p9", name: "Eid Gift Box", urdu: "Tohfa", category: "gifts", price: 2800, unit: "box", img: "images/figs-alt.jpg", tint: "" },
+  { id: "p10", name: "Premium Hamper", urdu: "Premium Hamper", category: "gifts", price: 3800, unit: "box", img: "images/mixed-dry-fruit.jpg", tint: "tint-gold" },
 ];
 
-const CATEGORY_LABELS = { nuts: "Nuts", dried: "Dried Fruit", gifts: "Gift Pack" };
+const CATEGORY_LABELS = { nuts: "Nuts & Seeds", dried: "Dried Fruit", gifts: "Gift Pack" };
 
 /* ---- Product card markup ---- */
 function productCardHTML(p) {

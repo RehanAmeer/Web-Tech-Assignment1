@@ -55,14 +55,17 @@ All of the above use real DOM manipulation and event listeners — no libraries.
 
 ## About the images
 
-Photos are hotlinked from Unsplash (free license, no attribution required) as
-placeholders, per the assignment note about using real images while awaiting your
-own product photography. To swap in your own photos from `@moonpure.pk`:
+Most product photos are the real ones from the `@moonpure.pk` Instagram — the
+logo, almonds, cashews, dates, figs and mixed dry fruit shots in `images/` were
+cropped straight from actual posts. A few items Moonpure doesn't have a clean
+product shot for yet (walnuts, pumpkin seeds) use free-license Unsplash photos as
+placeholders — swap those `src="https://images.unsplash.com/..."` links for your
+own photos in `images/` whenever you shoot them, both in the HTML files and in
+the `PRODUCTS` array at the top of `js/products.js`.
 
-1. Save your images into `images/` (e.g. `images/almonds.jpg`).
-2. Replace the relevant `src="https://images.unsplash.com/..."` with
-   `src="images/almonds.jpg"` in the HTML files and in `IMG` object at the top of
-   `js/products.js`.
+Two of the homepage promo images (`images/promo-dates-poster.jpg` and
+`images/promo-energy-poster.jpg`) are actual Moonpure marketing posters, used
+as-is since they already carry the brand's own design and phone number.
 
 ## Git / GitHub workflow
 
