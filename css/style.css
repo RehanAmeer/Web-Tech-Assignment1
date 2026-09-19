@@ -20,6 +20,15 @@
   --line: rgba(43, 29, 20, 0.15);
   --white: #fffaf2;
 
+  /* Theme-aware surface tokens — these are the only ones that change
+     between light and dark mode. Everything above stays constant,
+     since those colours are used consistently on their own
+     always-dark (nav/footer) or always-bright (accent) surfaces. */
+  --bg: var(--parchment-light);      /* page background */
+  --bg-soft: var(--parchment);       /* subtle section tint / hero gradient */
+  --surface: var(--white);           /* card & component backgrounds */
+  --heading: var(--walnut-900);      /* heading/emphasis text on --bg or --surface */
+
   --font-display: "Fraunces", "Georgia", serif;
   --font-body: "Karla", "Segoe UI", sans-serif;
 
@@ -27,6 +36,23 @@
   --radius-m: 10px;
   --shadow-card: 0 1px 0 rgba(43, 29, 20, 0.06);
   --max-width: 1180px;
+
+  color-scheme: light;
+}
+
+/* ---------- Dark theme ---------- */
+html[data-theme="dark"] {
+  --bg: #17100a;
+  --bg-soft: #201609;
+  --surface: #241a10;
+  --heading: #f3e9d8;
+  --ink: #ece2d2;
+  --ink-soft: #b7a891;
+  --line: rgba(255, 255, 255, 0.14);
+  --gold: #e0a83f;
+  --pistachio: #7c9868;
+
+  color-scheme: dark;
 }
 
 /* ---------- Base ---------- */
@@ -38,14 +64,15 @@ body {
   margin: 0;
   font-family: var(--font-body);
   color: var(--ink);
-  background: var(--parchment-light);
+  background: var(--bg);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  color: var(--walnut-900);
+  color: var(--heading);
   line-height: 1.15;
   margin: 0 0 0.5em;
   font-weight: 600;
@@ -123,8 +150,8 @@ input, textarea, select {
 }
 .btn-primary:hover { background: var(--gold-dark); }
 .btn-outline {
-  border-color: var(--parchment);
-  color: var(--walnut-900);
+  border-color: var(--bg-soft);
+  color: var(--heading);
 }
 .section--dark .btn-outline { border-color: var(--parchment-light); color: var(--white); }
 .btn-outline:hover { background: rgba(255,255,255,0.08); }
@@ -165,7 +192,9 @@ input, textarea, select {
   color: var(--walnut-900);
   display: flex; align-items: center; justify-content: center;
   font-size: 1rem;
+  overflow: hidden;
 }
+.brand .brand-mark img { width: 100%; height: 100%; object-fit: cover; }
 
 .nav-links {
   display: flex;
@@ -210,6 +239,22 @@ input, textarea, select {
 
 .nav-right { display: flex; align-items: center; gap: 18px; }
 
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: var(--white);
+  font-size: 1.05rem;
+  line-height: 1;
+  padding: 0;
+}
+.theme-toggle:hover { background: rgba(255,255,255,0.12); }
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -230,7 +275,7 @@ input, textarea, select {
 
 /* ---------- Hero ---------- */
 .hero {
-  background: linear-gradient(180deg, var(--parchment) 0%, var(--parchment-light) 100%);
+  background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
   overflow: hidden;
 }
 .hero .container {
@@ -256,7 +301,7 @@ input, textarea, select {
   display: block;
   font-family: var(--font-display);
   font-size: 1.5rem;
-  color: var(--walnut-900);
+  color: var(--heading);
 }
 .hero-stats div span { font-size: 0.85rem; color: var(--ink-soft); }
 
@@ -268,7 +313,7 @@ input, textarea, select {
 .hero-visual img {
   position: absolute;
   object-fit: cover;
-  border: 6px solid var(--white);
+  border: 6px solid var(--surface);
   box-shadow: 0 18px 40px rgba(43,29,20,0.22);
 }
 .hero-img-a { width: 68%; height: 78%; top: 0; left: 0; border-radius: 140px 20px 140px 20px; z-index: 2; }
@@ -305,7 +350,7 @@ input, textarea, select {
   border: 1px solid var(--line);
 }
 .highlight-item {
-  background: var(--white);
+  background: var(--surface);
   padding: 26px 22px;
 }
 .highlight-item .icon { font-size: 1.6rem; }
@@ -320,7 +365,7 @@ input, textarea, select {
 }
 
 .info-card {
-  background: var(--white);
+  background: var(--surface);
   border: 1px solid var(--line);
   border-top: 3px solid var(--pistachio);
   padding: 26px;
@@ -350,9 +395,9 @@ input, textarea, select {
   width: 42px; height: 42px;
   border-radius: 50%;
   border: 1px solid var(--line);
-  background: var(--white);
+  background: var(--surface);
   font-size: 1.1rem;
-  color: var(--walnut-900);
+  color: var(--heading);
 }
 .slider-nav button:hover { background: var(--gold); color: var(--walnut-900); }
 
@@ -370,7 +415,7 @@ input, textarea, select {
   padding: 9px 18px;
   border-radius: 999px;
   border: 1px solid var(--line);
-  background: var(--white);
+  background: var(--surface);
   font-weight: 700;
   font-size: 0.88rem;
   color: var(--ink-soft);
@@ -385,7 +430,7 @@ input, textarea, select {
   align-items: center;
   gap: 8px;
   border: 1px solid var(--line);
-  background: var(--white);
+  background: var(--surface);
   padding: 10px 16px;
   border-radius: 999px;
   min-width: 240px;
@@ -405,7 +450,7 @@ input, textarea, select {
 }
 
 .product-card {
-  background: var(--white);
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-s);
   overflow: hidden;
@@ -437,7 +482,7 @@ input, textarea, select {
 .product-body { padding: 18px 18px 20px; display: flex; flex-direction: column; flex: 1; }
 .product-body h3 { margin: 0 0 4px; font-size: 1.08rem; }
 .product-urdu { font-size: 0.82rem; color: var(--ink-soft); margin-bottom: 8px; }
-.product-price { font-family: var(--font-display); font-size: 1.2rem; color: var(--walnut-900); margin: 8px 0 14px; }
+.product-price { font-family: var(--font-display); font-size: 1.2rem; color: var(--heading); margin: 8px 0 14px; }
 .product-actions { display: flex; gap: 10px; margin-top: auto; align-items: center; }
 .qty-input {
   width: 52px;
@@ -464,7 +509,7 @@ input, textarea, select {
   height: 100%;
   width: 380px;
   max-width: 92vw;
-  background: var(--white);
+  background: var(--surface);
   transform: translateX(100%);
   transition: transform 0.25s ease;
   z-index: 201;
@@ -491,7 +536,7 @@ input, textarea, select {
 .cart-line-qty { display: flex; align-items: center; gap: 6px; }
 .cart-line-qty button {
   width: 24px; height: 24px; border-radius: 50%;
-  border: 1px solid var(--line); background: var(--white);
+  border: 1px solid var(--line); background: var(--surface);
 }
 .cart-remove { background: none; border: none; color: var(--rust); font-size: 0.78rem; text-decoration: underline; margin-top: 4px; }
 .cart-empty { text-align: center; color: var(--ink-soft); padding: 40px 10px; }
@@ -563,7 +608,7 @@ input, textarea, select {
   counter-reset: step;
 }
 .process-step {
-  background: var(--white);
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-s);
   padding: 24px 20px;
@@ -609,7 +654,7 @@ input, textarea, select {
 .map-frame iframe { width: 100%; height: 100%; border: 0; }
 
 .form-card {
-  background: var(--white);
+  background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-s);
   padding: 30px;
@@ -628,7 +673,7 @@ input, textarea, select {
   padding: 12px 14px;
   border: 1px solid var(--line);
   border-radius: var(--radius-s);
-  background: var(--parchment-light);
+  background: var(--bg);
 }
 .form-row textarea { resize: vertical; min-height: 110px; }
 .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
@@ -670,7 +715,7 @@ input, textarea, select {
   align-items: center;
   font-family: var(--font-display);
   font-size: 1.05rem;
-  color: var(--walnut-900);
+  color: var(--heading);
 }
 .accordion-trigger .plus {
   font-size: 1.4rem;
@@ -740,6 +785,22 @@ input, textarea, select {
   transform: translateX(-50%) translateY(0);
 }
 
+/* ---------- Promo banner (real marketing posters) ---------- */
+.promo-strip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.promo-card {
+  position: relative;
+  display: block;
+  border-radius: var(--radius-s);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  min-height: 220px;
+}
+.promo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
   .hero .container { grid-template-columns: 1fr; }
@@ -752,6 +813,8 @@ input, textarea, select {
   .about-hero img { height: 260px; }
   .contact-layout { grid-template-columns: 1fr; }
   .slider-track .product-card { min-width: calc(50% - 11px); }
+  .promo-strip { gap: 14px; }
+  .promo-card { min-height: 160px; }
 }
 
 @media (max-width: 720px) {
@@ -788,10 +851,3 @@ input, textarea, select {
 .tint-rust { filter: saturate(1.2) sepia(0.25) hue-rotate(-12deg) brightness(0.96); }
 .tint-cool { filter: saturate(1.05) hue-rotate(8deg); }
 .tint-gold { filter: saturate(1.3) sepia(0.3) hue-rotate(-4deg) brightness(1.03); }
-/ *  
- m i n o r  
- n a v b a r  
- s t y l e  
- a d j u s t m e n t  
- * /  
- 
